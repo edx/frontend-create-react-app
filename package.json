@@ -1,10 +1,10 @@
 {
-  "name": "@adamstankiewicz/create-edx-app",
+  "name": "@adamstankiewicz/create-edx-react-app",
   "version": "0.0.0-development",
   "description": "A CLI to generate a React application for edX.",
   "main": "build/index.js",
   "bin": {
-    "create-edx-app": "build/index.js"
+    "create-edx-react-app": "build/index.js"
   },
   "scripts": {
     "build": "rm -rf build/ && babel src/ -d build/ --ignore 'src/templates' --copy-files --include-dotfiles",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adamstankiewicz/create-edx-app.git"
+    "url": "https://github.com/adamstankiewicz/create-edx-react-app.git"
   },
   "author": "astankiewicz@edx.org",
   "keywords": [
@@ -32,9 +32,9 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/adamstankiewicz/create-edx-app/issues"
+    "url": "https://github.com/adamstankiewicz/create-edx-react-app/issues"
   },
-  "homepage": "https://github.com/adamstankiewicz/create-edx-app#readme",
+  "homepage": "https://github.com/adamstankiewicz/create-edx-react-app#readme",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.46",
     "@babel/core": "^7.0.0-beta.46",
