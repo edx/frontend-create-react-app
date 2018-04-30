@@ -15,11 +15,6 @@
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Configuration Options](#configuration-option)
-  * [Node](#node)
-  * [React](#react)
-  * [`commitlint`](#commitlint)
-  * [`semantic-release`](#semantic-release)
 
 ## Introduction
 
