@@ -1,12 +1,12 @@
 <p align="center">
- <a href="https://travis-ci.org/adamstankiewicz/create-edx-react-app">
-  <img src="https://travis-ci.org/adamstankiewicz/create-edx-react-app.svg?branch=master" alt="build-status"></img>
+ <a href="https://travis-ci.org/edx/create-edx-react-app">
+  <img src="https://travis-ci.org/edx/create-edx-react-app.svg?branch=master" alt="build-status"></img>
  </a>
- <a href="https://www.npmjs.com/package/@adamstankiewicz/create-edx-react-app">
-  <img src="https://img.shields.io/npm/v/@adamstankiewicz/create-edx-react-app.svg" alt="npm-version"></img>
+ <a href="https://www.npmjs.com/package/@edx/create-edx-react-app">
+  <img src="https://img.shields.io/npm/v/@edx/create-edx-react-app.svg" alt="npm-version"></img>
  </a>
- <a href="https://www.npmjs.com/package/@adamstankiewicz/create-edx-react-app">
-  <img src="https://img.shields.io/npm/dt/@adamstankiewicz/create-edx-react-app.svg" alt="npm-total-downloads"></img>
+ <a href="https://www.npmjs.com/package/@edx/create-edx-react-app">
+  <img src="https://img.shields.io/npm/dt/@edx/create-edx-react-app.svg" alt="npm-total-downloads"></img>
  </a>
 </p>
 
@@ -23,7 +23,7 @@
 ## Installation
 
 ```bash
-npm install @adamstankiewicz/create-edx-react-app --global
+npm install @edx/create-edx-react-app --global
 ```
 
 ## Usage
