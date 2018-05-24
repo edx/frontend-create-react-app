@@ -1,7 +1,7 @@
 {
   "name": "{{packageName}}",
-  "version": "0.1.0",
-  "description": "🍪 Automatically generates your edX React application boilerplate 🍪",
+  "version": "1.0.0",
+  "description": "edX React Application",
   "repository": "https://github.com/edx/{{packageName}}",
   "private": "true",
   "scripts": {
