@@ -7,7 +7,7 @@
     "create-edx-react-app": "build/index.js"
   },
   "scripts": {
-    "build": "rm -rf build/ && babel src/ -d build/ --ignore 'src/templates' --copy-files --include-dotfiles",
+    "build": "babel src/ -d build/ --copy-files --include-dotfiles --delete-dir-on-start",
     "codecov": "codecov",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "deploy": "npm run travis-deploy-once 'npm run semantic-release'",
@@ -24,6 +24,7 @@
   },
   "keywords": [
     "edx",
+    "frontend",
     "cli"
   ],
   "license": "AGPL-3.0",
@@ -58,16 +59,17 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.46",
+    "axios": "^0.18.0",
     "chalk": "^2.4.1",
     "child-process-promise": "^2.2.1",
     "commander": "^2.15.1",
-    "deepmerge": "^2.1.0",
+    "extract-zip": "^1.6.7",
     "fs-extra": "^5.0.0",
-    "globby": "^8.0.1",
     "inquirer": "^5.2.0",
     "is-json": "^2.0.1",
     "is-online": "^7.0.0",
-    "mustache": "^2.3.0",
+    "js-yaml": "^3.11.0",
+    "move-file": "^1.0.0",
     "normalize-package-data": "^2.4.0",
     "sort-package-json": "^1.13.0",
     "untildify": "^3.0.2",
@@ -76,8 +78,7 @@
   "jest": {
     "testPathIgnorePatterns": [
       "<rootDir>/build/",
-      "<rootDir>/node_modules/",
-      "<rootDir>/src/templates/"
+      "<rootDir>/node_modules/"
     ]
   }
 }
