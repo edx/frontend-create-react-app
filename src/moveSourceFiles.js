@@ -1,14 +1,18 @@
 import fse from 'fs-extra';
-import moveFile from 'move-file';
+import path from 'path';
+import globby from 'globby';
 
-import {
-  TEMP_DIR,
-  SOURCE_FOLDER,
-} from './constants';
+import { SOURCE_FOLDER, SOURCE_FILENAME } from './constants';
 
 const moveSourceFiles = async ({ destination }) => {
-  await moveFile(SOURCE_FOLDER, destination);
-  fse.removeSync(TEMP_DIR);
+  const destinationSourceFolder = path.join(destination, SOURCE_FOLDER);
+  const filePaths = await globby(destinationSourceFolder);
+  filePaths.forEach((filePath) => {
+    const relativePath = filePath.split(SOURCE_FOLDER)[1];
+    fse.moveSync(filePath, path.join(destination, relativePath));
+  });
+  fse.removeSync(path.join(destination, SOURCE_FILENAME));
+  fse.removeSync(destinationSourceFolder);
 };
 
 export default moveSourceFiles;

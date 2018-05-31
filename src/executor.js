@@ -1,29 +1,21 @@
+/* eslint no-console: 0 */
+
 import untildify from 'untildify';
 import fse from 'fs-extra';
 import { spawn } from 'child-process-promise';
-import normalizePackageData from 'normalize-package-data';
-import sortPackageJSON from 'sort-package-json';
 import isOnline from 'is-online';
 import chalk from 'chalk';
 
 import prompts from './prompts';
 import getCookieCutterSource from './getCookieCutterSource';
-import writeDataToSourceFiles from './writeDataToSourceFiles';
 import moveSourceFiles from './moveSourceFiles';
+import writeDataToSourceFiles from './writeDataToSourceFiles';
 
 const executor = async () => {
   const online = await isOnline();
 
   if (!online) {
     console.log(chalk.bold.redBright("⛔ 📡  You don't seem to be online"));
-    return;
-  }
-
-  try {
-    await getCookieCutterSource();
-    console.log();
-  } catch (error) {
-    console.log(chalk.bold.redBright(`⛔  There was a problem fetching source files: ${error}`));
     return;
   }
 
@@ -39,6 +31,13 @@ const executor = async () => {
     return;
   }
 
+  try {
+    await getCookieCutterSource({ destination: destinationDirectory });
+  } catch (error) {
+    console.log(chalk.bold.redBright(`⛔  There was a problem fetching source files: ${error}`));
+    return;
+  }
+
   await moveSourceFiles({ destination: destinationDirectory });
 
   await writeDataToSourceFiles({
@@ -46,12 +45,6 @@ const executor = async () => {
     destination: destinationDirectory,
     packageName,
   });
-
-  const packageJSONLocation = `${destinationDirectory}/package.json`;
-  const packageJSON = fse.readJsonSync(packageJSONLocation, 'utf8');
-
-  normalizePackageData(packageJSON);
-  fse.writeJsonSync(packageJSONLocation, sortPackageJSON(packageJSON), 'utf8');
 
   console.log();
   console.log(chalk.bold.cyanBright('⌛ 🤞  Installing packages'));
