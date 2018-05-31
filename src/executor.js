@@ -7,7 +7,9 @@ import isOnline from 'is-online';
 import chalk from 'chalk';
 
 import prompts from './prompts';
-import writeBaseTemplates from './fileWriters';
+import getCookieCutterSource from './getCookieCutterSource';
+import writeDataToSourceFiles from './writeDataToSourceFiles';
+import moveSourceFiles from './moveSourceFiles';
 
 const executor = async () => {
   const online = await isOnline();
@@ -17,19 +19,32 @@ const executor = async () => {
     return;
   }
 
+  try {
+    await getCookieCutterSource();
+    console.log();
+  } catch (error) {
+    console.log(chalk.bold.redBright(`⛔  There was a problem fetching source files: ${error}`));
+    return;
+  }
+
   const {
     packageName,
     targetDirectory,
   } = await prompts();
 
   const destinationDirectory = untildify(targetDirectory);
-  const templateValues = Object.freeze({
-    packageName,
-  });
 
-  await writeBaseTemplates({
-    templateValues,
+  if (fse.existsSync(destinationDirectory)) {
+    console.log(chalk.bold.redBright(`⛔  The destination location ${destinationDirectory} already exists.`));
+    return;
+  }
+
+  await moveSourceFiles({ destination: destinationDirectory });
+
+  await writeDataToSourceFiles({
+    files: ['package.json', 'docker-compose.yml'],
     destination: destinationDirectory,
+    packageName,
   });
 
   const packageJSONLocation = `${destinationDirectory}/package.json`;
@@ -38,14 +53,15 @@ const executor = async () => {
   normalizePackageData(packageJSON);
   fse.writeJsonSync(packageJSONLocation, sortPackageJSON(packageJSON), 'utf8');
 
-  console.log(chalk.bold.cyanBright('⌛ 🤞 Installing packages'));
+  console.log();
+  console.log(chalk.bold.cyanBright('⌛ 🤞  Installing packages'));
   await spawn('npm', ['install'], { cwd: destinationDirectory, stdio: 'inherit' });
   await spawn('git', ['init'], { cwd: destinationDirectory, stdio: 'inherit' });
 
   console.log(chalk.bold.magentaBright('Installation complete! 🎉 🎈 🎊'));
   console.log();
 
-  console.log(`🏇 ${chalk.bold.magentaBright('Change')} to destination directory: ${chalk.bold.cyanBright(`cd ${destinationDirectory}`)}`);
+  console.log(`🏇  ${chalk.bold.magentaBright('Change')} to destination directory: ${chalk.bold.cyanBright(`cd ${destinationDirectory}`)}`);
   console.log(`🎭  ${chalk.bold.magentaBright('Run')} ${chalk.bold.blueBright('jest')} ${chalk.bold.magentaBright('tests')}: ${chalk.bold.cyanBright('npm run test')} `);
   console.log(`🏗️  ${chalk.bold.magentaBright('Build')}: ${chalk.bold.cyanBright('npm run build')}`);
   console.log(`👕  ${chalk.bold.magentaBright('Run')} ${chalk.bold.blueBright('eslint')}: ${chalk.bold.cyanBright('npm run lint')}`);
