@@ -1,23 +1,26 @@
 language: node_js
 cache:
   directories:
-    - ~/.npm
+  - "~/.npm"
 notifications:
   email: true
 node_js:
-  - '8.9.3'
+- 8.9.3
 before_install:
-  - npm install -g npm@5.6.0
-  - npm install -g greenkeeper-lockfile@1
+- npm install -g npm@5.6.0
+- npm install -g greenkeeper-lockfile@1
 jobs:
   include:
-    - stage: test
-      script:
-        - npm run build
-        - npm run lint
-        - npm run test
-      before_script: greenkeeper-lockfile-update
-      after_script: greenkeeper-lockfile-upload
-    - stage: deploy
-      if: branch = master
-      script: npm run deploy
+  - stage: test
+    script:
+    - npm run build
+    - npm run lint
+    - npm run test
+    before_script: greenkeeper-lockfile-update
+    after_script: greenkeeper-lockfile-upload
+  - stage: deploy
+    if: branch = master
+    script: npm run deploy
+env:
+  global:
+    secure: roABlK9WUsDwZZwtgDVLZVuGfm5m6a34sMbgz93fvIcYFQ5hOdGzS4htsPM+3DHWGro2pRAbq7h1pM9wEbZEtj3pCc+5VMr/YozrdtX/wh6pry9oMnleV4HsXdkNGOPlh4JZxSRYZGZHKhCpNIN124dawcACfpN59/XHteYfABgmPXv0mGQAMOa51AZ0gje9Z5q0oNzSy5p4czqVLux3Eje1QrlL/dURNVXOOJ8iWtM97OIg2s8Gb6kXG7ZKfl9a5PQSlPhRluwBjZKmHQMRu1kYGPpM1wul031aGHD0iOKXu/O3cryZ6/9QVuqLD6gy/pGqu1TPQRaBQMZVr3s8aoi9IUTEskJJnBLenxhyhTdBT+5V4ntWVwfK2hx9yrOb+5MgouVIrg+1+WBN4w1Y6NNgJoU2UuIBo4cSpXCqcEloQ+lFrsdLAXjyJLvWTsGIWfO9izjVOzDSFf/9foWDYVqEz8qEda6wkOgNHhGKw3SXkhGGmORE2r36ZflbkBL9s71ZMtqCOFogkIqR2OBwZyD5i/bgduZUXN+QS6pFMrBijsl2D45cRFlo2zsj0SDwKDds5oVjLpxSB/OujQhqn98r0v5dUR+4GXtneTp2OFSZaxrXXejEssMtKIcfq/UYzHcLv0VExAlEozHZZ3dGBzAJVwJCvZOQQvjaTDiMX3o=
