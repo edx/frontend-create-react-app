@@ -7,11 +7,11 @@ import isOnline from 'is-online';
 import chalk from 'chalk';
 
 import prompts from './prompts';
-import getCookieCutterSource from './getCookieCutterSource';
 import moveSourceFiles from './moveSourceFiles';
 import writeDataToSourceFiles from './writeDataToSourceFiles';
+import { getCookieCutterSource } from './getCookieCutterSource';
 
-const executor = async () => {
+const executor = async (branchName) => {
   const online = await isOnline();
 
   if (!online) {
@@ -32,13 +32,18 @@ const executor = async () => {
   }
 
   try {
-    await getCookieCutterSource({ destination: destinationDirectory });
+    await getCookieCutterSource({ branchName, destination: destinationDirectory });
   } catch (error) {
     console.log(chalk.bold.redBright(`⛔  There was a problem fetching source files: ${error}`));
+    if (branchName) {
+      console.log(chalk.bold.redBright((
+        `⛔  Please confirm that '${branchName}' is an existing branch in the @edx/front-end-cookie-cutter-application repository.`
+      )));
+    }
     return;
   }
 
-  await moveSourceFiles({ destination: destinationDirectory });
+  await moveSourceFiles({ branchName, destination: destinationDirectory });
 
   await writeDataToSourceFiles({
     files: ['package.json', 'docker-compose.yml'],

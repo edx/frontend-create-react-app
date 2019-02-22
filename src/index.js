@@ -8,6 +8,7 @@ import executor from './executor';
 
 program.version(pkg.version)
   .description('CLI that builds starting boilerplate edX for new front-end applications')
+  .option('-b, --branch <name>', 'specify a branch to clone')
   .parse(process.argv);
 
-executor();
+executor(program.branch);

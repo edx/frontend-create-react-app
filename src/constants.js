@@ -1,9 +1,7 @@
-const SOURCE_URL = 'https://github.com/edx/front-end-cookie-cutter-application/archive/master.zip';
-const SOURCE_FOLDER = 'front-end-cookie-cutter-application-master';
-const SOURCE_FILENAME = 'master.zip';
+const SOURCE_BASE_URL = 'https://github.com/edx/front-end-cookie-cutter-application/archive';
+const SOURCE_BASE_FOLDER = 'front-end-cookie-cutter-application';
 
 export {
-  SOURCE_URL,
-  SOURCE_FOLDER,
-  SOURCE_FILENAME,
+  SOURCE_BASE_URL,
+  SOURCE_BASE_FOLDER,
 };
