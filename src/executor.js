@@ -37,7 +37,7 @@ const executor = async (branchName) => {
     console.log(chalk.bold.redBright(`⛔  There was a problem fetching source files: ${error}`));
     if (branchName) {
       console.log(chalk.bold.redBright((
-        `⛔  Please confirm that '${branchName}' is an existing branch in the @edx/front-end-cookie-cutter-application repository.`
+        `⛔  Please confirm that '${branchName}' is an existing branch in the @edx/frontend-cookie-cutter-application repository.`
       )));
     }
     return;

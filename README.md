@@ -18,7 +18,7 @@
 
 ## Introduction
 
-`create-edx-react-app` simplifies the creation of new front-end applications at edX by providing a CLI to generate a new instance of the [edX front-end cookie cutter](https://github.com/edx/front-end-cookie-cutter-application).
+`create-edx-react-app` simplifies the creation of new frontend applications at edX by providing a CLI to generate a new instance of the [edX frontend cookie cutter](https://github.com/edx/frontend-cookie-cutter-application).
 
 ## Installation
 
@@ -97,4 +97,4 @@ You should see something like
 
 on port `1991`.
 
-At this point, the new web application should mirror the [`edx/front-end-cookie-cutter-application`](https://github.com/edx/front-end-cookie-cutter-application).
+At this point, the new web application should mirror the [`edx/frontend-cookie-cutter-application`](https://github.com/edx/frontend-cookie-cutter-application).
