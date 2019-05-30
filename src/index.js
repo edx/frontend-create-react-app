@@ -7,7 +7,7 @@ import pkg from '../package.json';
 import executor from './executor';
 
 program.version(pkg.version)
-  .description('CLI that builds starting boilerplate edX for new front-end applications')
+  .description('CLI that builds starting boilerplate edX for new frontend applications')
   .option('-b, --branch <name>', 'specify a branch to clone')
   .parse(process.argv);
 
