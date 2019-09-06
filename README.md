@@ -1,12 +1,12 @@
 <p align="center">
- <a href="https://travis-ci.org/edx/create-edx-react-app">
-  <img src="https://travis-ci.org/edx/create-edx-react-app.svg?branch=master" alt="build-status"></img>
+ <a href="https://travis-ci.org/edx/frontend-create-react-app">
+  <img src="https://travis-ci.org/edx/frontend-create-react-app.svg?branch=master" alt="build-status"></img>
  </a>
- <a href="https://www.npmjs.com/package/@edx/create-edx-react-app">
-  <img src="https://img.shields.io/npm/v/@edx/create-edx-react-app.svg" alt="npm-version"></img>
+ <a href="https://www.npmjs.com/package/@edx/frontend-create-react-app">
+  <img src="https://img.shields.io/npm/v/@edx/frontend-create-react-app.svg" alt="npm-version"></img>
  </a>
- <a href="https://www.npmjs.com/package/@edx/create-edx-react-app">
-  <img src="https://img.shields.io/npm/dt/@edx/create-edx-react-app.svg" alt="npm-total-downloads"></img>
+ <a href="https://www.npmjs.com/package/@edx/frontend-create-react-app">
+  <img src="https://img.shields.io/npm/dt/@edx/frontend-create-react-app.svg" alt="npm-total-downloads"></img>
  </a>
 </p>
 
@@ -18,17 +18,17 @@
 
 ## Introduction
 
-`create-edx-react-app` simplifies the creation of new frontend applications at edX by providing a CLI to generate a new instance of the [edX frontend cookie cutter](https://github.com/edx/frontend-cookie-cutter-application).
+`frontend-create-react-app` simplifies the creation of new frontend applications at edX by providing a CLI to generate a new instance of the [edX frontend cookie cutter](https://github.com/edx/frontend-cookie-cutter-application).
 
 ## Installation
 
 ```bash
-npm install @edx/create-edx-react-app --global
+npm install @edx/frontend-create-react-app --global
 ```
 
 ## Usage
 
-Execute `create-edx-react-app` via the command line and then follow the configuration options.
+Execute `frontend-create-react-app` via the command line and then follow the configuration options.
 
 ![configuration-options](https://imgur.com/R2h8qL1.png)
 

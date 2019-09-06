@@ -1,10 +1,10 @@
 {
-  "name": "@edx/create-edx-react-app",
+  "name": "@edx/frontend-create-react-app",
   "version": "0.0.0-development",
   "description": "A CLI to generate a React application for edX.",
   "main": "build/index.js",
   "bin": {
-    "create-edx-react-app": "build/index.js"
+    "frontend-create-react-app": "build/index.js"
   },
   "scripts": {
     "build": "babel src/ -d build/ --copy-files --include-dotfiles --delete-dir-on-start",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/edx/create-edx-react-app.git"
+    "url": "https://github.com/edx/frontend-create-react-app.git"
   },
   "keywords": [
     "edx",
@@ -32,9 +32,9 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/edx/create-edx-react-app/issues"
+    "url": "https://github.com/edx/frontend-create-react-app/issues"
   },
-  "homepage": "https://github.com/edx/create-edx-react-app#readme",
+  "homepage": "https://github.com/edx/frontend-create-react-app#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
