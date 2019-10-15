@@ -3,6 +3,7 @@
 import extractZip from 'extract-zip';
 import chalk from 'chalk';
 import axios from 'axios';
+import fs from 'fs';
 import fse from 'fs-extra';
 import path from 'path';
 
@@ -28,6 +29,14 @@ const extractSource = ({ source, destination }) =>
     });
   });
 
+function moveDirFilesSync(sourceDir, destination) {
+  const files = fs.readdirSync(sourceDir);
+
+  files.forEach((file) => {
+    fse.moveSync(`${sourceDir}/${file}`, `${destination}/${file}`);
+  });
+}
+
 const getCookieCutterSource = async ({ branchName, destination }) => {
   const source = getSource(branchName);
 
@@ -49,6 +58,17 @@ const getCookieCutterSource = async ({ branchName, destination }) => {
     source: destinationSourceFilename,
     destination,
   });
+
+  /*
+    Code is cloned inside "frontend-cookiecutter-application-master".
+    This extracts the content files to an upper level so the code
+    will be created in the folder you indicated
+  */
+  moveDirFilesSync(`${destination}/frontend-cookiecutter-application-master`, destination);
+
+  // Removes the temporary folder and zip-file
+  fse.removeSync(`${destination}/frontend-cookiecutter-application-master`);
+  fse.removeSync(`${destination}/master.zip`);
 };
 
 export {
