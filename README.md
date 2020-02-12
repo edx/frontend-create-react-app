@@ -1,3 +1,10 @@
+# ⛔️ DEPRECATION WARNING
+**This library is deprecated and archived.**
+
+New frontend apps can be created by copying the [frontend-template-application](https://github.com/edx/frontend-template-application) using its "Use this template" button.  That repo contains instructions for how to customize the resulting repository to your needs.  Please contact @edx/fedx-team with any questions.
+
+
+
 <p align="center">
  <a href="https://travis-ci.org/edx/frontend-create-react-app">
   <img src="https://travis-ci.org/edx/frontend-create-react-app.svg?branch=master" alt="build-status"></img>
